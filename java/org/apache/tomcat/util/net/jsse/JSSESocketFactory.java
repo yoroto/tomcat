@@ -635,8 +635,12 @@ public class JSSESocketFactory implements ServerSocketFactory, SSLUtil {
             sessionTimeout = defaultSessionTimeout;
         }
 
-        sslSessionContext.setSessionCacheSize(sessionCacheSize);
-        sslSessionContext.setSessionTimeout(sessionTimeout);
+        if (sessionCacheSize > 0) {
+            sslSessionContext.setSessionCacheSize(sessionCacheSize);
+        }
+        if (sessionTimeout > 0) {
+            sslSessionContext.setSessionTimeout(sessionTimeout);
+        }
     }
 
     /**
